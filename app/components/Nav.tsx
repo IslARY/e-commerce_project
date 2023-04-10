@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function Nav({user}: Session){
 	return (
 		<nav className='flex justify-between items-center py-8'>
-			<h1>Styled</h1>
+			<h1>PC-Gear</h1>
 			<ul className='flex gap-12 items-center'>
 				{ !user && (
 						<li className=' bg-rose-400 text-white py-2 px-4 rounded-md '>
