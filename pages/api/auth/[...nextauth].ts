@@ -11,8 +11,12 @@ export const authOptions = {
 		GoogleProvider({
 			clientId: process.env.GOOGLE_CLIENT_ID as string,
 			clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+			httpOptions: {
+				timeout: 40000,
+			},
 		}),
 	],
+	secret: process.env.JWT_SECRET as string,
 	events:{
 		createUser: async ({user}) => {
 			const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {

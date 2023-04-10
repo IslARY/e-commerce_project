@@ -1,6 +1,6 @@
 'use client'
 import {Session} from 'next-auth';
-import {signIn} from 'next-auth/react';
+import {signIn, signOut} from 'next-auth/react';
 import Image from "next/image";
 
 export default function Nav({user}: Session){
@@ -14,9 +14,14 @@ export default function Nav({user}: Session){
 						</li>
 				)}
 				{ user && (
-					<li>
-						<Image src={user?.image as string} alt={user.name as string} width={40} height={40} className='rounded-full' />
-					</li>
+					<ul className='flex gap-12 items-center'>
+						<li>
+							<Image src={user?.image as string} alt={user.name as string} width={40} height={40} className='rounded-full' />
+						</li>
+						<li>
+							<button onClick={()=>signOut()} className='bg-rose-400 text-white py-2 px-4 rounded-md'>Sign Out</button>
+						</li>
+					</ul>
 				)
 				}
 			</ul>
