@@ -11,6 +11,9 @@ module.exports = {
         fluid: "repeat(auto-fit, minmax(15rem,1fr))",
       },
     },
+    daisyui: {
+      themes: [],
+    }
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 }
