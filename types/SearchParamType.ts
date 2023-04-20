@@ -3,9 +3,10 @@ type Params = {
 }
 type SearchParams = {
 	name: string
-	price: number | null
+	price: number
 	image: string
 	id: string
+	quantity: number
 	description: string | null
 }
 export type SearchParamTypes = {
