@@ -2,6 +2,7 @@
 import Image from "next/image"
 import { useDataStore } from "@/store"
 import formatPrice from "@/util/PriceFormat"
+import {IoAddCircle, IoRemoveCircle} from 'react-icons/io5'
 
 export default function Cart(){
 	const cartStore = useDataStore()
@@ -16,7 +17,16 @@ export default function Cart(){
 								<Image src={item.image} alt={item.name} width={120} height={120} />
 								<div className="flex flex-col">
 									<h2 className="text-sm">{item.name}</h2>
-									<h2 className="text-sm">Quantity: {item.quantity}</h2>
+                                    <div className="flex gap-2 ">
+                                        {/* Update Quantity of a product  */}
+                                        <h2 className="text-sm">Quantity: {item.quantity}</h2>
+                                        <button onClick={() => cartStore.removeProduct({ id: item.id, image: item.image, name: item.name, price: item.price, quantity: item.quantity}) }> 
+                                            <IoRemoveCircle />
+                                        </button>  
+                                        <button onClick={() => cartStore.addProduct({ id: item.id, image: item.image, name: item.name, price: item.price, quantity: item.quantity}) }> 
+                                                <IoAddCircle />
+                                       </button>
+                                    </div>    
 									<p className="text-sm">{formatPrice(item.price)}</p>
 								</div>
 							</div>
