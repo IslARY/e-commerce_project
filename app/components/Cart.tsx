@@ -3,6 +3,7 @@ import Image from "next/image"
 import { useDataStore } from "@/store"
 import formatPrice from "@/util/PriceFormat"
 import {IoAddCircle, IoRemoveCircle} from 'react-icons/io5'
+import basket from '@/public/basket.png'
 
 export default function Cart(){
 	const cartStore = useDataStore()
@@ -32,7 +33,15 @@ export default function Cart(){
 							</div>
 						)
 					)}
+                    {cartStore.cart.length > 0 && (
 					<button className="btn btn-base w-full mt-10 self-center items-center bg-teal-600 border-0 text-lg">Checkout</button>
+                    )}
+                    {!cartStore.cart.length && (
+                        <div className="opacity-60 flex flex-col items-center gap-12 text-xl font-medium pt-56"> 
+                           <h1>Uhhh ohhh... The Cart is empty!</h1> 
+                            <Image src={basket} alt="empty cart" width={190} height={190} />
+                        </div>
+                    )}
 				</main>
 				</section>	
 		</div>
